@@ -20,19 +20,15 @@ res.json(result);
 
 
 // Add transaction
-router.post("/", auth,(req,res)=>{
+router.post("/", auth, (req,res)=>{
 
-const {text,amount} = req.body;
+const {text,amount,category} = req.body;
 
 db.query(
-"INSERT INTO transactions (user_id,text,amount) VALUES (?,?,?)",
-[req.user.id,text,amount],
+"INSERT INTO transactions (user_id,text,amount,category) VALUES (?,?,?,?)",
+[req.user.id,text,amount,category],
 (err,result)=>{
-
-res.json({
-message:"Transaction added"
-});
-
+res.json({message:"Added"});
 });
 
 });
