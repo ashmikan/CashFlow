@@ -117,7 +117,7 @@ Add Transaction
 <li key={transaction.id} className="transaction-item">
 <span className="transaction-text">{transaction.text}</span>
 <span className="transaction-category">{transaction.category}</span>
-<span className="transaction-amount">₹{transaction.amount}</span>
+<span className="transaction-amount">Rs.{transaction.amount}</span>
 </li>
 ))}
 </ul>
