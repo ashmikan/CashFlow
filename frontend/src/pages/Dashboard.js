@@ -1,6 +1,7 @@
 import axios from "axios";
 import {useEffect,useState} from "react";
 import "../styles/Dashboard.css";
+import ExpenseChart from "../components/Chart";
 
 function Dashboard(){
 
@@ -144,7 +145,9 @@ function Dashboard(){
     </ul>
     )}
 
-    </div>
+    </div><br/>
+
+    <ExpenseChart transactions={transactions} />
 
     </div>
 
