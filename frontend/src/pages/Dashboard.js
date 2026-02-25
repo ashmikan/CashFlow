@@ -80,6 +80,17 @@ function Dashboard(){
     },[]);
 
 
+    const income =
+    transactions
+    .filter(t=>Number(t.amount)>0)
+    .reduce((a,b)=>a+Number(b.amount),0);
+
+    const expense =
+    transactions
+    .filter(t=>Number(t.amount)<0)
+    .reduce((a,b)=>a+Number(b.amount),0);
+
+
     return(
 
     <div className="dashboard-container">
@@ -163,7 +174,15 @@ function Dashboard(){
 
     </div><br/>
 
-    <ExpenseChart transactions={transactions} /> <br/>
+    <div className="summary-section">
+    <h4 className="dashboard-subtitle">Summary</h4>
+    <p>Income: Rs.{income}</p>
+    <p>Expense: Rs.{expense}</p>
+    <p>Balance: Rs.{income+expense}</p>
+    <br/><br/>
+
+    <ExpenseChart transactions={transactions} /> 
+    </div><br/>
 
     <h4 className="dashboard-subtitle">Monthly Reports</h4>
 
