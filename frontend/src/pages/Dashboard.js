@@ -38,6 +38,7 @@ function Dashboard(){
     const [text,setText] = useState("");
     const [amount,setAmount] = useState("");
     const [category,setCategory] = useState("");
+    const [monthlyData,setMonthlyData] = useState([]);
     const [focusedField,setFocusedField] = useState("");
 
     const token =
@@ -62,6 +63,21 @@ function Dashboard(){
     loadTransactions();
 
     };
+
+
+    useEffect(()=>{
+
+    axios.get(
+    "http://localhost:5000/api/transactions/monthly",
+    {
+    headers:{Authorization:token}
+    }
+    )
+    .then(res=>{
+    setMonthlyData(res.data);
+    });
+
+    },[]);
 
 
     return(
@@ -120,10 +136,10 @@ function Dashboard(){
     Add Transaction
     </button>
 
-    </div>
+    </div><br/>
 
     <div className="transactions-section">
-    <h4 className="transactions-title">Recent Transactions</h4>
+    <h4 className="dashboard-subtitle">Recent Transactions</h4>
 
     {transactions.length===0 ? (
     <p className="empty-state">No transactions yet.</p>
@@ -147,7 +163,24 @@ function Dashboard(){
 
     </div><br/>
 
-    <ExpenseChart transactions={transactions} />
+    <ExpenseChart transactions={transactions} /> <br/>
+
+    <h4 className="dashboard-subtitle">Monthly Reports</h4>
+
+    <div className="monthly-reports-section">
+    {monthlyData.length===0 ? (
+    <p className="empty-state">No monthly report data yet.</p>
+    ) : (
+    <ul className="monthly-reports-list">
+    {monthlyData.map((m,index)=>(
+    <li key={`${m.month}-${index}`} className="monthly-report-item">
+    <span className="monthly-report-month">Month {m.month}</span>
+    <span className="monthly-report-total">Rs.{m.total}</span>
+    </li>
+    ))}
+    </ul>
+    )}
+    </div>
 
     </div>
 
