@@ -14,7 +14,7 @@
   max-width: 700px;
   background: #ffffff;
   border-radius: 20px;
-  padding: 30px;
+  padding: 50px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -57,9 +57,9 @@
 }
 
 .dashboard-subtitle {
-  margin: 8px 0 20px 0;
+  margin: 20px 0 20px 0;
   color: #718096;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .dashboard-form {
@@ -203,6 +203,46 @@
 .empty-state {
   margin: 0;
   color: #718096;
+}
+
+.monthly-reports-section {
+  margin-top: 10px;
+}
+
+.monthly-reports-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.monthly-report-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #f7fafc;
+  border: 1px solid #e2e8f0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.monthly-report-item:hover {
+  transform: translateY(-1px);
+  border-color: #cbd5e0;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.monthly-report-month {
+  color: #4a5568;
+  font-weight: 600;
+}
+
+.monthly-report-total {
+  color: #2f855a;
+  font-weight: 700;
 }
 
 @media (max-width: 680px) {
