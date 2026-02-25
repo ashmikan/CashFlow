@@ -50,4 +50,24 @@ message:"Deleted"
 
 });
 
+//Monthly Reports Feature
+router.get("/monthly", auth,(req,res)=>{
+
+db.query(
+
+`SELECT 
+MONTH(date) as month,
+SUM(amount) as total
+FROM transactions
+WHERE user_id=?
+GROUP BY MONTH(date)`,
+
+[req.user.id],
+
+(err,result)=>{
+res.json(result);
+});
+
+});
+
 module.exports = router;
