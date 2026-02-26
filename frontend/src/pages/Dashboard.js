@@ -2,6 +2,14 @@ import axios from "axios";
 import {useEffect,useState} from "react";
 import "../styles/Dashboard.css";
 import ExpenseChart from "../components/Chart";
+import cashFlowLogo from "../assets/cashflow-logo.svg";
+
+const navItems = [
+{id:"add-transaction",label:"Add Transaction"},
+{id:"recent-transactions",label:"Recent Transactions"},
+{id:"summary",label:"Summary"},
+{id:"monthly-reports",label:"Monthly Reports"}
+];
 
 function Dashboard(){
 
@@ -40,6 +48,7 @@ function Dashboard(){
     const [category,setCategory] = useState("");
     const [monthlyData,setMonthlyData] = useState([]);
     const [focusedField,setFocusedField] = useState("");
+    const [activeSection,setActiveSection] = useState("add-transaction");
 
     const token =
     localStorage.getItem("token");
@@ -47,6 +56,34 @@ function Dashboard(){
     useEffect(()=>{
 
     loadTransactions();
+
+    },[]);
+
+
+    useEffect(()=>{
+
+    const handleScroll = ()=>{
+
+    let currentSection = "add-transaction";
+
+    navItems.forEach(item=>{
+
+    const section = document.getElementById(item.id);
+
+    if(section && window.scrollY + 140 >= section.offsetTop){
+    currentSection = item.id;
+    }
+
+    });
+
+    setActiveSection(currentSection);
+
+    };
+
+    handleScroll();
+    window.addEventListener("scroll",handleScroll);
+
+    return()=>window.removeEventListener("scroll",handleScroll);
 
     },[]);
 
@@ -91,17 +128,52 @@ function Dashboard(){
     .reduce((a,b)=>a+Number(b.amount),0);
 
 
+    const handleSidebarNavigation = (sectionId)=>{
+
+    const section = document.getElementById(sectionId);
+
+    if(section){
+    section.scrollIntoView({behavior:"smooth",block:"start"});
+    setActiveSection(sectionId);
+    }
+
+    };
+
+
     return(
 
     <div className="dashboard-container">
 
+    <aside className="dashboard-sidebar">
+    <div className="sidebar-brand">
+    <img src={cashFlowLogo} alt="CashFlow logo" className="sidebar-logo-image" />
+    <div className="sidebar-brand-text">
+    <h4 className="sidebar-brand-title">CashFlow</h4>
+    <p className="sidebar-brand-subtitle">Finance Tracker</p>
+    </div>
+    </div>
+    <nav className="nav flex-column nav-pills gap-2 sidebar-nav" aria-label="Dashboard sections">
+    {navItems.map(item=>(
+    <button
+    key={item.id}
+    type="button"
+    className={`nav-link text-start sidebar-nav-link ${activeSection===item.id?"active":""}`}
+    onClick={()=>handleSidebarNavigation(item.id)}
+    >
+    {item.label}
+    </button>
+    ))}
+    </nav>
+    </aside>
+
+    <div className="dashboard-main-content">
     <div className="dashboard-card">
 
     <h1 className="logo">CashFlow</h1>
 
     <h2 className="dashboard-title">Dashboard</h2>
 
-    <h4 className="dashboard-subtitle">Add Transaction</h4>
+    <h4 id="add-transaction" className="dashboard-subtitle">Add Transaction</h4>
 
     <div className="dashboard-form">
 
@@ -149,7 +221,7 @@ function Dashboard(){
 
     </div><br/>
 
-    <div className="transactions-section">
+    <div id="recent-transactions" className="transactions-section">
     <h4 className="dashboard-subtitle">Recent Transactions</h4>
 
     {transactions.length===0 ? (
@@ -174,7 +246,7 @@ function Dashboard(){
 
     </div><br/>
 
-    <div className="summary-section">
+    <div id="summary" className="summary-section">
     <h4 className="dashboard-subtitle">Summary</h4>
     <p>Income: Rs.{income}</p>
     <p>Expense: Rs.{expense}</p>
@@ -184,7 +256,7 @@ function Dashboard(){
     <ExpenseChart transactions={transactions} /> 
     </div><br/>
 
-    <h4 className="dashboard-subtitle">Monthly Reports</h4>
+    <h4 id="monthly-reports" className="dashboard-subtitle">Monthly Reports</h4>
 
     <div className="monthly-reports-section">
     {monthlyData.length===0 ? (
@@ -199,6 +271,8 @@ function Dashboard(){
     ))}
     </ul>
     )}
+    </div>
+
     </div>
 
     </div>
