@@ -4,7 +4,7 @@
   min-height: 100vh;
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   padding: 30px 20px;
   gap: 24px;
@@ -90,6 +90,8 @@
 .dashboard-main-content {
   flex: 1;
   max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .dashboard-card {
