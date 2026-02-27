@@ -29,6 +29,17 @@
   border-bottom: 1px solid #e2e8f0;
 }
 
+.sidebar-brand .logo{
+  margin: 10px 0 -10px 0;
+  font-size: 22px;
+  font-weight: 750;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .sidebar-logo-image {
   width: 38px;
   height: 38px;
@@ -109,12 +120,13 @@
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
 }
 
-.dashboard-card .logo {
-  font-size: 28px;
+.dashboard-title {
+  margin: 0;
+  font-size: 30px;
   font-weight: 750;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   margin: 0 auto 12px auto;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #4c5a98 0%, #6f2ab5 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -123,22 +135,6 @@
   display: block;
   text-align: center;
   width: fit-content;
-  
-}
-
-.dashboard-card .logo::before {
-  position: absolute;
-  left: -40px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 28px;
-}
-
-.dashboard-title {
-  margin: 0;
-  font-size: 30px;
-  color: #2d3748;
-  text-align: center;
 }
 
 .dashboard-subtitle {
