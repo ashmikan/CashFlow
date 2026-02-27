@@ -4,20 +4,24 @@
   min-height: 100vh;
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 30px 20px;
   gap: 24px;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .dashboard-sidebar {
   width: 240px;
-  background: #ffffff;
-  border-radius: 16px;
+  background: #a8c3d8;
   padding: 22px;
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  height: 100vh;
+  overflow-y: auto;
   position: sticky;
-  top: 20px;
+  top: 0;
+  flex-shrink: 0;
 }
 
 .sidebar-brand {
@@ -26,7 +30,18 @@
   gap: 10px;
   margin-bottom: 16px;
   padding-bottom: 12px;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid #949fae;
+}
+
+.sidebar-brand .logo{
+  margin: 10px 0 -10px 0;
+  font-size: 22px;
+  font-weight: 750;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .sidebar-logo-image {
@@ -45,12 +60,13 @@
 
 .sidebar-brand-subtitle {
   margin: 0;
+  padding-left: 2px;
   color: #718096;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .sidebar-nav {
-  margin-top: 4px;
+  margin-top: 34px;
 }
 
 .sidebar-nav-link {
@@ -58,12 +74,12 @@
   width: 100%;
   text-align: left;
   color: #4a5568;
-  background: #f7fafc;
+  background: #dfe9f7;
   border: 1px solid #e2e8f0;
   border-radius: 10px;
   padding: 10px 12px;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.4;
   transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
 }
@@ -90,6 +106,8 @@
 .dashboard-main-content {
   flex: 1;
   max-width: 760px;
+  width: 100%;
+  margin: 30px auto;
 }
 
 .dashboard-card {
@@ -100,6 +118,7 @@
   padding: 50px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  line-height: 1.5;
 }
 
 .dashboard-card:hover {
@@ -107,12 +126,13 @@
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
 }
 
-.dashboard-card .logo {
-  font-size: 28px;
+.dashboard-title {
+  margin: 0;
+  font-size: 30px;
   font-weight: 750;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   margin: 0 auto 12px auto;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #4c5a98 0%, #6f2ab5 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -121,22 +141,6 @@
   display: block;
   text-align: center;
   width: fit-content;
-  
-}
-
-.dashboard-card .logo::before {
-  position: absolute;
-  left: -40px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 28px;
-}
-
-.dashboard-title {
-  margin: 0;
-  font-size: 30px;
-  color: #2d3748;
-  text-align: center;
 }
 
 .dashboard-subtitle {
@@ -329,13 +333,16 @@
 }
 
 .summary-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
 .summary-section p {
-  display: inline-block;
-  margin: 0 10px 0 0;
+  display: block;
+  margin: 0;
   padding: 16px 30px;
   border-radius: 10px;
   background: #f7fafc;
@@ -363,12 +370,20 @@
     flex-direction: column;
     align-items: stretch;
     gap: 16px;
+    padding: 12px;
   }
 
   .dashboard-sidebar {
     width: 100%;
     position: static;
     box-sizing: border-box;
+    height: auto;
+    overflow-y: visible;
+    border-radius: 14px;
+  }
+
+  .dashboard-main-content {
+    margin: 0;
   }
 
   .sidebar-nav {
@@ -397,7 +412,6 @@
   }
 
   .summary-section p {
-    display: block;
-    margin-bottom: 10px;
+    width: 100%;
   }
 }

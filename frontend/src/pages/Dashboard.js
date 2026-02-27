@@ -2,7 +2,7 @@ import axios from "axios";
 import {useEffect,useState} from "react";
 import "../styles/Dashboard.css";
 import ExpenseChart from "../components/Chart";
-import cashFlowLogo from "../assets/cashflow-logo.svg";
+import Sidebar from "../components/Sidebar";
 
 const navItems = [
 {id:"add-transaction",label:"Add Transaction"},
@@ -144,32 +144,14 @@ function Dashboard(){
 
     <div className="dashboard-container">
 
-    <aside className="dashboard-sidebar">
-    <div className="sidebar-brand">
-    <img src={cashFlowLogo} alt="CashFlow logo" className="sidebar-logo-image" />
-    <div className="sidebar-brand-text">
-    <h4 className="sidebar-brand-title">CashFlow</h4>
-    <p className="sidebar-brand-subtitle">Finance Tracker</p>
-    </div>
-    </div>
-    <nav className="nav flex-column nav-pills gap-2 sidebar-nav" aria-label="Dashboard sections">
-    {navItems.map(item=>(
-    <button
-    key={item.id}
-    type="button"
-    className={`nav-link text-start sidebar-nav-link ${activeSection===item.id?"active":""}`}
-    onClick={()=>handleSidebarNavigation(item.id)}
-    >
-    {item.label}
-    </button>
-    ))}
-    </nav>
-    </aside>
+    <Sidebar
+    items={navItems}
+    activeSection={activeSection}
+    onNavigate={handleSidebarNavigation}
+    />
 
     <div className="dashboard-main-content">
     <div className="dashboard-card">
-
-    <h1 className="logo">CashFlow</h1>
 
     <h2 className="dashboard-title">Dashboard</h2>
 
