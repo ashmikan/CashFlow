@@ -1,14 +1,6 @@
-# 💸 CashFlow
+# <h1 align="center">💸 CashFlow</h1>
 
-An interactive full-stack expense tracker built with **React**, **Node.js/Express**, and **MySQL**.
-
-<p align="center">
-  <a href="#-features">Features</a> •
-  <a href="#-project-structure">Project Structure</a> •
-  <a href="#-quick-start">Quick Start</a> •
-  <a href="#-api-endpoints">API Endpoints</a> •
-  <a href="#-troubleshooting">Troubleshooting</a>
-</p>
+<p align="center">An interactive full-stack expense tracker web application built with <b>React</b>, <b>Node.js/Express</b>, and <b>MySQL</b>.</p>
 
 ---
 
@@ -21,6 +13,27 @@ An interactive full-stack expense tracker built with **React**, **Node.js/Expres
 - 📈 Chart visualization for transaction insights
 - 🗓️ Monthly report aggregation
 - 🧭 Sidebar section navigation with smooth scrolling
+
+---
+
+## 🛠️ Technologies Used
+
+### 💻 Frontend:
+
+- React
+- Axios
+- Chart.js
+- Bootstrap
+
+### ⚙️ Backend:
+
+- Node.js
+- Express.js
+- JWT Authentication
+
+### 🗄️ Database:
+
+- MySQL
 
 ---
 
@@ -211,13 +224,18 @@ Authorization: <token>
 
 ---
 
-## 📌 Next Improvements (Optional)
+## 📌 Next Improvements 
 
 - Move DB credentials from `db.js` to environment variables
 - Add backend scripts: `start` and `dev` (`nodemon`)
 - Add transaction validation/error handling
-- Add logout and token expiry handling
+---
+
+<p align="center">Built for tracking personal finance with a clean dashboard experience! 📊</p>
 
 ---
 
-Built for tracking personal finance with a clean dashboard experience.
+<div align="center">
+👩🏼‍💻 Credit: <a href="https://github.com/ashmikan">Ashmika Nathali </a>
+Last Edited on: 27/02/2026
+</div>
