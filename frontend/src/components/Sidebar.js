@@ -1,7 +1,7 @@
 import cashFlowLogo from "../assets/cashflow-logo.svg";
 import "../styles/Dashboard.css";
 
-function Sidebar({items,activeSection,onNavigate}){
+function Sidebar({items,activeSection,onNavigate,onLogout}){
 
 return(
 
@@ -25,6 +25,14 @@ onClick={()=>onNavigate(item.id)}
 </button>
 ))}
 </nav>
+
+<button
+type="button"
+className="sidebar-logout-button"
+onClick={onLogout}
+>
+Logout
+</button>
 </aside>
 
 );

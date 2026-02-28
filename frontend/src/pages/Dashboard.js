@@ -1,5 +1,6 @@
 import axios from "axios";
 import {useEffect,useState} from "react";
+import {useNavigate} from "react-router-dom";
 import "../styles/Dashboard.css";
 import ExpenseChart from "../components/Chart";
 import Sidebar from "../components/Sidebar";
@@ -12,6 +13,8 @@ const navItems = [
 ];
 
 function Dashboard(){
+
+    const navigate = useNavigate();
 
     const loadTransactions = async()=>{
 
@@ -139,6 +142,11 @@ function Dashboard(){
 
     };
 
+    const handleLogout = ()=>{
+    localStorage.removeItem("token");
+    navigate("/login");
+    };
+
 
     return(
 
@@ -148,6 +156,7 @@ function Dashboard(){
     items={navItems}
     activeSection={activeSection}
     onNavigate={handleSidebarNavigation}
+    onLogout={handleLogout}
     />
 
     <div className="dashboard-main-content">
