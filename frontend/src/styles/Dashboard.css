@@ -5,7 +5,9 @@
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background:
+    radial-gradient(circle at 18% 22%, rgba(102, 126, 234, 0.28) 0%, rgba(102, 126, 234, 0) 34%),
+    linear-gradient(145deg, #03cdff 0%, #6f65d8 46%, #764ba2 100%);
   gap: 24px;
   padding: 20px;
   box-sizing: border-box;
@@ -13,7 +15,7 @@
 
 .dashboard-sidebar {
   width: 240px;
-  background: #a8c3d8;
+  background: linear-gradient(165deg, #d8defc 0%, #c7c1ef 50%, #d2bfe7 100%);
   padding: 22px;
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
   border-radius: 16px;
