@@ -4,13 +4,18 @@
   align-items: center;
   justify-content: center;
   padding: 24px;
-  background: linear-gradient(135deg, #8e9ddf 0%, #b18bd8 100%);
+  background-image:
+    linear-gradient(rgba(20, 24, 40, 0.45), rgba(20, 24, 40, 0.45)),
+    url("https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1600&q=80");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .home-card {
   width: 100%;
   max-width: 560px;
-  background: transparent;
+  background: rgba(174, 223, 228, 0.78);
   border-radius: 16px;
   padding: 40px 32px;
   text-align: center;
