@@ -10,6 +10,39 @@ function MonthlyReportsPage() {
   const token = localStorage.getItem("token");
   const [monthlyData, setMonthlyData] = useState([]);
 
+  const getMonthName = (monthValue) => {
+    const monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ];
+
+    const monthNumber = Number(monthValue);
+
+    if (Number.isNaN(monthNumber)) {
+      return monthValue;
+    }
+
+    if (monthNumber >= 1 && monthNumber <= 12) {
+      return monthNames[monthNumber - 1];
+    }
+
+    if (monthNumber >= 0 && monthNumber <= 11) {
+      return monthNames[monthNumber];
+    }
+
+    return `Month ${monthValue}`;
+  };
+
   useEffect(() => {
     axios
       .get("http://localhost:5000/api/transactions/monthly", {
@@ -49,7 +82,7 @@ function MonthlyReportsPage() {
               <ul className="monthly-reports-list">
                 {monthlyData.map((m, index) => (
                   <li key={`${m.month}-${index}`} className="monthly-report-item">
-                    <span className="monthly-report-month">Month {m.month}</span>
+                    <span className="monthly-report-month">{getMonthName(m.month)}</span>
                     <span className="monthly-report-total">Rs.{m.total}</span>
                   </li>
                 ))}
