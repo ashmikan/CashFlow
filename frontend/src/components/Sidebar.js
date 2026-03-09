@@ -16,10 +16,10 @@ return(
 <nav className="nav flex-column nav-pills gap-2 sidebar-nav" aria-label="Dashboard sections">
 {items.map(item=>(
 <button
-key={item.id}
+key={item.to}
 type="button"
-className={`nav-link text-start sidebar-nav-link ${activeSection===item.id?"active":""}`}
-onClick={()=>onNavigate(item.id)}
+className={`nav-link text-start sidebar-nav-link ${activeSection===item.to?"active":""}`}
+onClick={()=>onNavigate(item.to)}
 >
 {item.label}
 </button>
