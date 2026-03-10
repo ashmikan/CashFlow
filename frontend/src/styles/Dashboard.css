@@ -206,8 +206,9 @@
 
 .dashboard-subtitle {
   margin: 20px 0 20px 0;
-  color: #718096;
-  font-size: 20px;
+  color: #95a4bb;
+  font-size: 26px;
+  text-align: center;
 }
 
 .dashboard-form {
@@ -428,6 +429,45 @@
   margin-bottom: 20px;
 }
 
+.recent-monthly-summary-section {
+  margin-top: 24px;
+}
+
+.recent-monthly-summary-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.recent-monthly-summary-title {
+  margin: 0;
+  font-size: 20px;
+  color: #2d3748;
+}
+
+.recent-monthly-summary-view-all {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.recent-monthly-summary-view-all:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+.recent-monthly-summary-view-all:active {
+  transform: translateY(0);
+}
+
 @media (max-width: 680px) {
   .dashboard-container {
     flex-direction: column;
@@ -476,5 +516,10 @@
 
   .summary-section p {
     width: 100%;
+  }
+
+  .recent-monthly-summary-header {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
