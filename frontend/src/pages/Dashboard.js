@@ -106,6 +106,14 @@ function Dashboard() {
         plugins: {
             legend: {
                 display: false
+            },
+            tooltip: {
+                callbacks: {
+                    label: (context) => {
+                        const value = Number(context.raw) || 0;
+                        return `Rs. ${value.toLocaleString()}`;
+                    }
+                }
             }
         },
         scales: {
@@ -116,6 +124,12 @@ function Dashboard() {
             },
             y: {
                 beginAtZero: true,
+                grid: {
+                    color: (context) => {
+                        const tickValue = context.tick.value;
+                        return Number(tickValue) >= 0 ? "rgba(47, 133, 90, 0.16)" : "rgba(229, 62, 62, 0.16)";
+                    }
+                },
                 ticks: {
                     callback: (value) => `Rs. ${Number(value).toLocaleString()}`
                 }
@@ -166,7 +180,10 @@ function Dashboard() {
                             <>
                                 <ul className="monthly-reports-list">
                                     {recentMonthlySummary.map((summary, index) => (
-                                        <li key={`${summary.month}-${index}`} className="monthly-report-item">
+                                        <li
+                                            key={`${summary.month}-${index}`}
+                                            className={`monthly-report-item ${Number(summary.total) >= 0 ? "monthly-report-item-positive" : "monthly-report-item-negative"}`}
+                                        >
                                             <span className="monthly-report-month">{getMonthName(summary.month)}</span>
                                             <span
                                                 className={`monthly-report-total ${Number(summary.total) >= 0 ? "monthly-report-total-positive" : "monthly-report-total-negative"}`}
@@ -175,7 +192,7 @@ function Dashboard() {
                                             </span>
                                         </li>
                                     ))}
-                                </ul>
+                                </ul><br/>
 
                                 <div className="monthly-summary-chart-wrapper">
                                     <Bar data={recentMonthlySummaryBarData} options={recentMonthlySummaryBarOptions} />
