@@ -1,9 +1,20 @@
 import axios from "axios";
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Bar } from "react-chartjs-2";
+import {
+    CategoryScale,
+    Chart as ChartJS,
+    Legend,
+    LinearScale,
+    BarElement,
+    Tooltip
+} from "chart.js";
 import "../styles/Dashboard.css";
 import Sidebar from "../components/Sidebar";
 import dashboardNavItems from "../constants/dashboardNavItems";
+
+ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
 function Dashboard() {
     const navigate = useNavigate();
@@ -64,6 +75,48 @@ function Dashboard() {
             .slice(0, 3);
     }, [monthlyData]);
 
+    const recentMonthlySummaryBarData = useMemo(() => {
+        const chartSource = [...recentMonthlySummary].reverse();
+
+        return {
+            labels: chartSource.map((summary) => getMonthName(summary.month)),
+            datasets: [
+                {
+                    label: "Amount (Rs.)",
+                    data: chartSource.map((summary) => Number(summary.total) || 0),
+                    backgroundColor: "rgba(102, 126, 234, 0.8)",
+                    borderColor: "rgba(118, 75, 162, 1)",
+                    borderWidth: 1,
+                    borderRadius: 8,
+                    maxBarThickness: 52
+                }
+            ]
+        };
+    }, [recentMonthlySummary]);
+
+    const recentMonthlySummaryBarOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: false
+            }
+        },
+        scales: {
+            x: {
+                grid: {
+                    display: false
+                }
+            },
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    callback: (value) => `Rs. ${value}`
+                }
+            }
+        }
+    };
+
     const handleLogout = () => {
         localStorage.removeItem("token");
         navigate("/login");
@@ -104,14 +157,20 @@ function Dashboard() {
                         ) : recentMonthlySummary.length === 0 ? (
                             <p className="empty-state">No monthly summary available yet.</p>
                         ) : (
-                            <ul className="monthly-reports-list">
-                                {recentMonthlySummary.map((summary, index) => (
-                                    <li key={`${summary.month}-${index}`} className="monthly-report-item">
-                                        <span className="monthly-report-month">{getMonthName(summary.month)}</span>
-                                        <span className="monthly-report-total">Rs.{summary.total}</span>
-                                    </li>
-                                ))}
-                            </ul>
+                            <>
+                                <ul className="monthly-reports-list">
+                                    {recentMonthlySummary.map((summary, index) => (
+                                        <li key={`${summary.month}-${index}`} className="monthly-report-item">
+                                            <span className="monthly-report-month">{getMonthName(summary.month)}</span>
+                                            <span className="monthly-report-total">Rs.{summary.total}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+
+                                <div className="monthly-summary-chart-wrapper">
+                                    <Bar data={recentMonthlySummaryBarData} options={recentMonthlySummaryBarOptions} />
+                                </div>
+                            </>
                         )}
                     </div>
                 </div>
