@@ -468,6 +468,15 @@
   transform: translateY(0);
 }
 
+.monthly-summary-chart-wrapper {
+  margin-top: 18px;
+  height: 260px;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #f8faff;
+}
+
 @media (max-width: 680px) {
   .dashboard-container {
     flex-direction: column;
@@ -521,5 +530,10 @@
   .recent-monthly-summary-header {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .monthly-summary-chart-wrapper {
+    height: 220px;
+    padding: 10px;
   }
 }
