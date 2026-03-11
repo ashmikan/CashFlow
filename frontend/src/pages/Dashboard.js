@@ -84,8 +84,14 @@ function Dashboard() {
                 {
                     label: "Amount (Rs.)",
                     data: chartSource.map((summary) => Number(summary.total) || 0),
-                    backgroundColor: "rgba(102, 126, 234, 0.8)",
-                    borderColor: "rgba(118, 75, 162, 1)",
+                    backgroundColor: (context) => {
+                        const value = context.raw;
+                        return Number(value) >= 0 ? "rgba(47, 133, 90, 0.85)" : "rgba(229, 62, 62, 0.82)";
+                    },
+                    borderColor: (context) => {
+                        const value = context.raw;
+                        return Number(value) >= 0 ? "rgba(39, 103, 73, 1)" : "rgba(197, 48, 48, 1)";
+                    },
                     borderWidth: 1,
                     borderRadius: 8,
                     maxBarThickness: 52
@@ -111,7 +117,7 @@ function Dashboard() {
             y: {
                 beginAtZero: true,
                 ticks: {
-                    callback: (value) => `Rs. ${value}`
+                    callback: (value) => `Rs. ${Number(value).toLocaleString()}`
                 }
             }
         }
@@ -162,7 +168,11 @@ function Dashboard() {
                                     {recentMonthlySummary.map((summary, index) => (
                                         <li key={`${summary.month}-${index}`} className="monthly-report-item">
                                             <span className="monthly-report-month">{getMonthName(summary.month)}</span>
-                                            <span className="monthly-report-total">Rs.{summary.total}</span>
+                                            <span
+                                                className={`monthly-report-total ${Number(summary.total) >= 0 ? "monthly-report-total-positive" : "monthly-report-total-negative"}`}
+                                            >
+                                                Rs.{Number(summary.total).toLocaleString()}
+                                            </span>
                                         </li>
                                     ))}
                                 </ul>

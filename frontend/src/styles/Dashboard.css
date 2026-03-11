@@ -392,8 +392,15 @@
 }
 
 .monthly-report-total {
-  color: #2f855a;
   font-weight: 700;
+}
+
+.monthly-report-total-positive {
+  color: #2f855a;
+}
+
+.monthly-report-total-negative {
+  color: #e53e3e;
 }
 
 .summary-section {
