@@ -110,7 +110,7 @@ function AddTransactionPage() {
               </div>
 
               <div className="dashboard-form add-transaction-form">
-                <label className={`add-transaction-field ${focusedField === "text" ? "is-focused" : ""}`}>
+                <label className={`add-transaction-field add-transaction-field-full ${focusedField === "text" ? "is-focused" : ""}`}>
                   <span className="add-transaction-label">Description</span>
                   <input
                     className={`dashboard-input ${focusedField === "text" ? "focused" : ""}`}
@@ -122,7 +122,7 @@ function AddTransactionPage() {
                   />
                 </label>
 
-                <label className={`add-transaction-field ${focusedField === "amount" ? "is-focused" : ""}`}>
+                <label className={`add-transaction-field add-transaction-field-full ${focusedField === "amount" ? "is-focused" : ""}`}>
                   <span className="add-transaction-label">Amount</span>
                   <input
                     className={`dashboard-input ${focusedField === "amount" ? "focused" : ""}`}
