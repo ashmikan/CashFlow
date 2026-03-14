@@ -5,6 +5,7 @@ import "../styles/Dashboard.css";
 import ExpenseChart from "../components/Chart";
 import Sidebar from "../components/Sidebar";
 import dashboardNavItems from "../constants/dashboardNavItems";
+import summaryIllustration from "../assets/summary-minimal-illustration.svg";
 
 function SummaryPage() {
   const navigate = useNavigate();
@@ -50,14 +51,31 @@ function SummaryPage() {
       />
 
       <div className="dashboard-main-content">
-        <div className="dashboard-card">
+        <div className="dashboard-card summary-page-card">
           <h2 className="dashboard-title">Summary</h2>
 
-          <div className="summary-section">
-            <p>Income: Rs.{income}</p>
-            <p>Expense: Rs.{expense}</p>
-            <p>Balance: Rs.{income + expense}</p>
+          <div className="summary-page-hero" role="presentation">
+            <img
+              src={summaryIllustration}
+              alt="Minimal flat illustration of summary metrics and trend"
+              className="summary-page-hero-image"
+            />
           </div>
+
+          <div className="summary-section">
+            <article className="summary-stat-card summary-stat-income">
+              <span className="summary-stat-label">Income</span>
+              <p className="summary-stat-value">Rs.{income}</p>
+            </article>
+            <article className="summary-stat-card summary-stat-expense">
+              <span className="summary-stat-label">Expense</span>
+              <p className="summary-stat-value">Rs.{expense}</p>
+            </article>
+            <article className="summary-stat-card summary-stat-balance">
+              <span className="summary-stat-label">Balance</span>
+              <p className="summary-stat-value">Rs.{income + expense}</p>
+            </article>
+          </div> 
 
           <ExpenseChart transactions={transactions} />
         </div>
