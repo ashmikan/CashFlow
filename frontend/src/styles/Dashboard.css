@@ -435,37 +435,32 @@
   max-width: 860px;
 }
 
-.summary-page-subtitle {
-  margin: 10px 0 18px;
-  text-align: center;
-  color: #435375;
-  font-size: 15px;
-  line-height: 1.6;
-}
-
 .summary-page-hero {
   position: relative;
   overflow: hidden;
-  border-radius: 18px;
-  padding: 14px;
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(29, 78, 216, 0.88) 50%, rgba(124, 58, 237, 0.82) 100%);
-  box-shadow: 0 18px 36px rgba(30, 41, 59, 0.26);
-  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  border-radius: 14px;
+  max-width: 390px;
+  margin: 0 auto 14px;
+  padding: 8px;
+  background: linear-gradient(145deg, #3d719b 0%, #f1f7ff 55%, #4773c3 100%);
+  border: 1px solid #dbe5f2;
+  box-shadow: 0 8px 16px rgba(148, 163, 184, 0.14);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .summary-page-hero:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 22px 44px rgba(30, 41, 59, 0.32);
+  border-color: #cbd5e1;
+  box-shadow: 0 12px 20px rgba(148, 163, 184, 0.18);
 }
 
 .summary-page-hero-image {
   width: 100%;
+  max-width: 360px;
   height: auto;
   display: block;
+  margin: 0 auto;
   border-radius: 12px;
-  filter: drop-shadow(0 10px 24px rgba(15, 23, 42, 0.25));
-  transform: translateY(0);
-  transition: transform 0.32s ease;
+  filter: none;
 }
 
 .summary-page-hero:hover .summary-page-hero-image {
@@ -908,7 +903,8 @@
   }
 
   .summary-page-hero {
-    padding: 10px;
+    max-width: 100%;
+    padding: 6px;
   }
 
   .recent-monthly-summary-header {

@@ -5,7 +5,7 @@ import "../styles/Dashboard.css";
 import ExpenseChart from "../components/Chart";
 import Sidebar from "../components/Sidebar";
 import dashboardNavItems from "../constants/dashboardNavItems";
-import summaryIllustration from "../assets/summary-insights-illustration.svg";
+import summaryIllustration from "../assets/summary-minimal-illustration.svg";
 
 function SummaryPage() {
   const navigate = useNavigate();
@@ -52,18 +52,15 @@ function SummaryPage() {
 
       <div className="dashboard-main-content">
         <div className="dashboard-card summary-page-card">
-          <h2 className="dashboard-title">Summary</h2> <br/>
-          <p className="summary-page-subtitle">
-            Track your cash flow in real time and quickly spot spending trends.
-          </p>
+          <h2 className="dashboard-title">Summary</h2>
 
           <div className="summary-page-hero" role="presentation">
             <img
               src={summaryIllustration}
-              alt="Illustration of financial insights and analytics"
+              alt="Minimal flat illustration of summary metrics and trend"
               className="summary-page-hero-image"
             />
-          </div> <br/>
+          </div>
 
           <div className="summary-section">
             <article className="summary-stat-card summary-stat-income">
