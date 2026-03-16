@@ -419,6 +419,22 @@
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
 }
 
+.transaction-clear-button {
+  background: #fff4e6;
+  border-color: #f4c48b;
+  color: #9a3412;
+}
+
+.transaction-clear-button:hover {
+  background: #ffe4c7;
+  border-color: #e7a55f;
+  box-shadow: 0 8px 16px rgba(154, 52, 18, 0.2);
+}
+
+.transaction-clear-button:focus-visible {
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.25);
+}
+
 .transaction-delete-button {
   border: none;
   border-radius: 8px;

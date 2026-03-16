@@ -188,7 +188,7 @@ function RecentTransactionsPage() {
                 <option value="expense">Expense</option>
               </select>
 
-              <button type="button" className="transaction-secondary-button" onClick={clearFilters}>
+              <button type="button" className="transaction-secondary-button transaction-clear-button" onClick={clearFilters}>
                 Clear filters
               </button>
             </div>
