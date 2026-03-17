@@ -950,6 +950,68 @@
   letter-spacing: 0.03em;
 }
 
+/* Monthly Chart Section */
+.monthly-chart-section {
+  margin-bottom: 32px;
+  padding: 20px;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.monthly-chart-section h3 {
+  margin: 0 0 16px 0;
+  color: #2d3748;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Monthly Reports Table */
+.monthly-reports-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+
+.monthly-reports-table thead {
+  background: linear-gradient(135deg, #f0f4ff 0%, #f9f7fe 100%);
+  border-bottom: 2px solid #667eea;
+}
+
+.monthly-reports-table th {
+  padding: 14px 16px;
+  text-align: left;
+  color: #2d3748;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.monthly-reports-table tbody tr {
+  border-bottom: 1px solid #e2e8f0;
+  transition: background-color 0.2s ease;
+}
+
+.monthly-reports-table tbody tr:hover {
+  background-color: #f7fafc;
+}
+
+.monthly-reports-table td {
+  padding: 14px 16px;
+  color: #4a5568;
+  font-size: 14px;
+}
+
+.monthly-report-row {
+  align-items: center;
+}
+
+.monthly-report-change {
+  font-weight: 700;
+  font-size: 15px;
+}
+
 .add-transaction-field .dashboard-input,
 .add-transaction-field .dashboard-select {
   padding: 14px 16px;
