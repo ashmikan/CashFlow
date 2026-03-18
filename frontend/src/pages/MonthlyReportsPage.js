@@ -49,7 +49,29 @@ function MonthlyReportsPage() {
 
   const calculatePercentageChange = (current, previous) => {
     if (previous === 0) return 0;
-    return (((current - previous) / previous) * 100).toFixed(2);
+    return ((current - previous) / previous) * 100;
+  };
+
+  const formatSignedAmount = (value) => {
+    const amount = Number(value);
+
+    if (Number.isNaN(amount)) {
+      return "0.00";
+    }
+
+    const sign = amount > 0 ? "+" : amount < 0 ? "-" : "";
+    return `${sign}${Math.abs(amount).toFixed(2)}`;
+  };
+
+  const formatSignedPercent = (value) => {
+    const num = Number(value);
+
+    if (Number.isNaN(num)) {
+      return "0.00%";
+    }
+
+    const sign = num > 0 ? "+" : num < 0 ? "-" : "";
+    return `${sign}${Math.abs(num).toFixed(2)}%`;
   };
 
   const getPercentageColor = (percentage) => {
@@ -78,6 +100,10 @@ function MonthlyReportsPage() {
     navigate(path);
   };
 
+  const chartTotals = monthlyData.map((m) => Number(m.total));
+  const chartMin = chartTotals.length ? Math.min(...chartTotals) : 0;
+  const chartMax = chartTotals.length ? Math.max(...chartTotals) : 0;
+
   return (
     <div className="dashboard-container">
       <Sidebar
@@ -104,15 +130,17 @@ function MonthlyReportsPage() {
                       labels: monthlyData.map((m) => getMonthName(m.month)),
                       datasets: [
                         {
-                          label: "Total Spending (Rs.)",
-                          data: monthlyData.map((m) => Math.abs(Number(m.total))),
+                          label: "Monthly Summary (Rs.)",
+                          data: chartTotals,
                           borderColor: "rgb(75, 192, 192)",
                           backgroundColor: "rgba(75, 192, 192, 0.1)",
                           tension: 0.4,
                           fill: true,
                           pointRadius: 6,
                           pointHoverRadius: 8,
-                          pointBackgroundColor: "rgb(75, 192, 192)"
+                          pointBackgroundColor: chartTotals.map((total) =>
+                            total >= 0 ? "#2f855a" : "#e53e3e"
+                          )
                         }
                       ]
                     }}
@@ -127,14 +155,25 @@ function MonthlyReportsPage() {
                         legend: {
                           display: true,
                           position: "top"
+                        },
+                        tooltip: {
+                          callbacks: {
+                            label: (context) =>
+                              `Monthly Summary: Rs.${formatSignedAmount(context.parsed.y)}`
+                          }
                         }
                       },
                       scales: {
                         y: {
-                          beginAtZero: true,
+                          beginAtZero: chartMin >= 0,
+                          suggestedMin: chartMin < 0 ? chartMin * 1.1 : 0,
+                          suggestedMax: chartMax > 0 ? chartMax * 1.1 : 0,
                           title: {
                             display: true,
-                            text: "Amount (Rs.)"
+                            text: "Monthly Summary (Rs.)"
+                          },
+                          ticks: {
+                            callback: (value) => `Rs.${formatSignedAmount(value)}`
                           }
                         }
                       }
@@ -160,8 +199,8 @@ function MonthlyReportsPage() {
                         index === 0
                           ? "—"
                           : calculatePercentageChange(
-                              Math.abs(Number(m.total)),
-                              Math.abs(Number(monthlyData[index - 1].total))
+                              Number(m.total),
+                              Number(monthlyData[index - 1].total)
                             );
 
                       return (
@@ -170,7 +209,7 @@ function MonthlyReportsPage() {
                             {getMonthName(m.month)}
                           </td>
                           <td className="monthly-report-total">
-                            Rs.{Math.abs(Number(m.total)).toFixed(2)}
+                            Rs.{formatSignedAmount(m.total)}
                           </td>
                           <td
                             className="monthly-report-change"
@@ -183,7 +222,7 @@ function MonthlyReportsPage() {
                           >
                             {percentageChange === "—"
                               ? "—"
-                              : `${Number(percentageChange) > 0 ? "+" : ""}${percentageChange}%`}
+                              : formatSignedPercent(percentageChange)}
                           </td>
                         </tr>
                       );
