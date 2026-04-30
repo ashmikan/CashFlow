@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Login.css";
+import logo from "../assets/cashflow-logo.png";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -53,80 +54,88 @@ function Login() {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-card">
-        <div className="login-header">
-          <h1 className="logo">CashFlow</h1>
-          <h1 className="login-title">Welcome Back</h1>
-          <p className="login-subtitle">Sign in to your CashFlow account</p>
-        </div>
-
-        <form className="login-form" onSubmit={login}>
-          {error && (
-            <div className="error-message">
-              <span className="error-icon">⚠️</span>
-              {error}
-            </div>
-          )}
-
-          <div className={`input-group ${focusedField === "email" ? "focused" : ""}`}>
-            <label htmlFor="email">Email Address</label>
-            <input
-              id="email"
-              type="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              onFocus={() => setFocusedField("email")}
-              onBlur={() => setFocusedField("")}
-              required
-            />
-          </div>
-
-          <div className={`input-group ${focusedField === "password" ? "focused" : ""}`}>
-            <label htmlFor="password">Password</label>
-            <input
-              id="password"
-              type="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              onFocus={() => setFocusedField("password")}
-              onBlur={() => setFocusedField("")}
-              required
-            />
-          </div>
-
-          <button
-            type="submit"
-            className={`login-button ${loading ? "loading" : ""}`}
-            disabled={loading}
-          >
-            {loading ? (
-              <>
-                <span className="spinner"></span>
-                Signing In...
-              </>
-            ) : (
-              "Sign In"
-            )}
-          </button>
-        </form>
-
-        <div className="login-footer">
-          <p>
-            Don't have an account?{" "}
-            <a href="/register" className="register-link">
-              Sign Up
+    <div className="login-wrapper">
+      <div className="login-container">
+        {/* Left Section */}
+        <div className="login-left">
+          <div className="login-circle login-circle-1"></div>
+          <div className="login-circle login-circle-2"></div>
+          <div className="login-circle login-circle-3"></div>
+          <div className="left-overlay"></div>
+          <div className="left-content">
+            <h1 className="welcome-title">Welcome to CashFlow!</h1>
+            <p className="welcome-subtitle"><i>
+              ✨ CashFlow is where your finances shine. Track expenses, manage budgets, and achieve your financial goals with ease.
+            </i></p>
+            <p className="signup-prompt">Don't you have an account?</p>
+            <a href="/register" className="register-button-alt">
+              REGISTER
             </a>
-          </p>
+          </div>
         </div>
-      </div>
 
-      <div className="background-decoration">
-        <div className="circle circle-1"></div>
-        <div className="circle circle-2"></div>
-        <div className="circle circle-3"></div>
+        {/* Right Section */}
+        <div className="login-right">
+          <div className="login-card">
+            <div className="logo-section">
+              <img src={logo} alt="CashFlow Logo" className="logo-icon" />
+            </div>
+
+            <h3 className="login-title">Login</h3>
+
+            <form className="login-form" onSubmit={login}>
+              {error && (
+                <div className="error-message">
+                  <span className="error-icon">⚠️</span>
+                  {error}
+                </div>
+              )}
+
+              <div className={`input-group ${focusedField === "email" ? "focused" : ""}`}>
+                <input
+                  id="email"
+                  type="email"
+                  placeholder="Email address"
+                  className="login-input"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  onFocus={() => setFocusedField("email")}
+                  onBlur={() => setFocusedField("")}
+                  required
+                />
+              </div>
+
+              <div className={`input-group ${focusedField === "password" ? "focused" : ""}`}>
+                <input
+                  id="password"
+                  type="password"
+                  placeholder="Password"
+                  className="login-input"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  onFocus={() => setFocusedField("password")}
+                  onBlur={() => setFocusedField("")}
+                  required
+                />
+              </div>
+
+              <button
+                type="submit"
+                className={`login-button ${loading ? "loading" : ""}`}
+                disabled={loading}
+              >
+                {loading ? (
+                  <>
+                    <span className="spinner"></span>
+                    SIGNING IN...
+                  </>
+                ) : (
+                  "LOGIN"
+                )}
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   );
