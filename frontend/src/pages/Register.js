@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Register.css";
+import logo from "../assets/cashflow-logo.png";
 
 function Register() {
   const [name, setName] = useState("");
@@ -64,109 +65,116 @@ function Register() {
   };
 
   return (
-    <div className="register-container">
-      <div className="register-card">
-        <div className="register-header">
-          <h1 className="logo">CashFlow</h1>
-          <h1 className="register-title">Create Account</h1>
-          <p className="register-subtitle">Join CashFlow to manage your finances</p>
-        </div>
-
-        <form className="register-form" onSubmit={register}>
-          {error && (
-            <div className="error-message">
-              <span className="error-icon">⚠️</span>
-              {error}
-            </div>
-          )}
-
-          <div className={`input-group ${focusedField === "name" ? "focused" : ""}`}>
-            <label htmlFor="name">Full Name</label>
-            <input
-              id="name"
-              type="text"
-              placeholder="Enter your full name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              onFocus={() => setFocusedField("name")}
-              onBlur={() => setFocusedField("")}
-              required
-            />
-          </div>
-
-          <div className={`input-group ${focusedField === "email" ? "focused" : ""}`}>
-            <label htmlFor="email">Email Address</label>
-            <input
-              id="email"
-              type="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              onFocus={() => setFocusedField("email")}
-              onBlur={() => setFocusedField("")}
-              required
-            />
-          </div>
-
-          <div className={`input-group ${focusedField === "password" ? "focused" : ""}`}>
-            <label htmlFor="password">Password</label>
-            <input
-              id="password"
-              type="password"
-              placeholder="Create a password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              onFocus={() => setFocusedField("password")}
-              onBlur={() => setFocusedField("")}
-              required
-            />
-            <small className="password-hint">Must be at least 6 characters</small>
-          </div>
-
-          <div className={`input-group ${focusedField === "confirmPassword" ? "focused" : ""}`}>
-            <label htmlFor="confirmPassword">Confirm Password</label>
-            <input
-              id="confirmPassword"
-              type="password"
-              placeholder="Confirm your password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              onFocus={() => setFocusedField("confirmPassword")}
-              onBlur={() => setFocusedField("")}
-              required
-            />
-          </div>
-
-          <button
-            type="submit"
-            className={`register-button ${loading ? "loading" : ""}`}
-            disabled={loading}
-          >
-            {loading ? (
-              <>
-                <span className="spinner"></span>
-                Creating Account...
-              </>
-            ) : (
-              "Create Account"
-            )}
-          </button>
-        </form>
-
-        <div className="register-footer">
-          <p>
-            Already have an account?{" "}
-            <a href="/login" className="login-link">
-              Sign In
+    <div className="register-wrapper">
+      <div className="register-container">
+        {/* Left Section */}
+        <div className="register-left">
+          <div className="register-circle register-circle-1"></div>
+          <div className="register-circle register-circle-2"></div>
+          <div className="register-circle register-circle-3"></div>
+          <div className="left-overlay"></div>
+          <div className="left-content">
+            <h1 className="welcome-title">Start Your Journey!</h1>
+            <p className="welcome-subtitle"><i>
+              ✨ Create your CashFlow account and take control of your finances. Get insights, track expenses, and build better spending habits.
+            </i></p>
+            <p className="signup-prompt">Already have an account?</p>
+            <a href="/login" className="login-button-alt">
+              SIGN IN
             </a>
-          </p>
+          </div>
         </div>
-      </div>
 
-      <div className="background-decoration">
-        <div className="circle circle-1"></div>
-        <div className="circle circle-2"></div>
-        <div className="circle circle-3"></div>
+        {/* Right Section */}
+        <div className="register-right">
+          <div className="register-card">
+            <div className="logo-section">
+              <img src={logo} alt="CashFlow Logo" className="logo-icon" />
+            </div>
+
+            <h3 className="register-title">Create Account</h3>
+
+            <form className="register-form" onSubmit={register}>
+              {error && (
+                <div className="error-message">
+                  <span className="error-icon">⚠️</span>
+                  {error}
+                </div>
+              )}
+
+              <div className={`input-group ${focusedField === "name" ? "focused" : ""}`}>
+                <input
+                  id="name"
+                  type="text"
+                  placeholder="Full name"
+                  className="register-input"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  onFocus={() => setFocusedField("name")}
+                  onBlur={() => setFocusedField("")}
+                  required
+                />
+              </div>
+
+              <div className={`input-group ${focusedField === "email" ? "focused" : ""}`}>
+                <input
+                  id="email"
+                  type="email"
+                  placeholder="Email address"
+                  className="register-input"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  onFocus={() => setFocusedField("email")}
+                  onBlur={() => setFocusedField("")}
+                  required
+                />
+              </div>
+
+              <div className={`input-group ${focusedField === "password" ? "focused" : ""}`}>
+                <input
+                  id="password"
+                  type="password"
+                  placeholder="Password (min. 6 characters)"
+                  className="register-input"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  onFocus={() => setFocusedField("password")}
+                  onBlur={() => setFocusedField("")}
+                  required
+                />
+              </div>
+
+              <div className={`input-group ${focusedField === "confirmPassword" ? "focused" : ""}`}>
+                <input
+                  id="confirmPassword"
+                  type="password"
+                  placeholder="Confirm password"
+                  className="register-input"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  onFocus={() => setFocusedField("confirmPassword")}
+                  onBlur={() => setFocusedField("")}
+                  required
+                />
+              </div>
+
+              <button
+                type="submit"
+                className={`register-button ${loading ? "loading" : ""}`}
+                disabled={loading}
+              >
+                {loading ? (
+                  <>
+                    <span className="spinner"></span>
+                    CREATING ACCOUNT...
+                  </>
+                ) : (
+                  "SIGN UP"
+                )}
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   );
