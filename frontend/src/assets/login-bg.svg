@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800">
+  <defs>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1000" height="800" fill="transparent"/>
+  
+  <!-- Floating Wallet Icon - Top Right -->
+  <g id="wallet" opacity="0.15" transform="translate(850, 100) rotate(15)">
+    <rect x="0" y="20" width="100" height="80" rx="10" fill="white" stroke="white" stroke-width="2"/>
+    <rect x="0" y="20" width="100" height="30" rx="10" fill="white"/>
+    <line x1="70" y1="40" x2="70" y2="95" stroke="white" stroke-width="2"/>
+    <circle cx="25" cy="65" r="8" fill="white"/>
+    <circle cx="50" cy="65" r="8" fill="white"/>
+  </g>
+  
+  <!-- Coins Stack - Left Side -->
+  <g id="coins" opacity="0.12" transform="translate(120, 600)">
+    <circle cx="0" cy="0" r="30" fill="white" stroke="white" stroke-width="1.5"/>
+    <text x="0" y="10" font-size="24" font-weight="bold" text-anchor="middle" fill="white" opacity="0.7">$</text>
+    
+    <circle cx="35" cy="-15" r="28" fill="white" stroke="white" stroke-width="1.5"/>
+    <text x="35" y="-3" font-size="22" font-weight="bold" text-anchor="middle" fill="white" opacity="0.6">$</text>
+    
+    <circle cx="60" cy="-30" r="26" fill="white" stroke="white" stroke-width="1.5"/>
+    <text x="60" y="-18" font-size="20" font-weight="bold" text-anchor="middle" fill="white" opacity="0.5">$</text>
+  </g>
+  
+  <!-- Growth Chart - Bottom Right -->
+  <g id="chart" opacity="0.13" transform="translate(750, 500)">
+    <!-- Chart background -->
+    <rect x="0" y="0" width="200" height="150" rx="8" fill="white" stroke="white" stroke-width="1.5"/>
+    <!-- Grid lines -->
+    <line x1="0" y1="50" x2="200" y2="50" stroke="white" stroke-width="1" opacity="0.3"/>
+    <line x1="0" y1="100" x2="200" y2="100" stroke="white" stroke-width="1" opacity="0.3"/>
+    <!-- Chart bars -->
+    <rect x="20" y="70" width="30" height="80" fill="white" opacity="0.6"/>
+    <rect x="65" y="40" width="30" height="110" fill="white" opacity="0.7"/>
+    <rect x="110" y="20" width="30" height="130" fill="white" opacity="0.8"/>
+    <rect x="155" y="10" width="30" height="140" fill="white" opacity="0.9"/>
+  </g>
+  
+  <!-- Up Arrow - Top Center Right -->
+  <g id="arrow" opacity="0.14" transform="translate(650, 150)">
+    <circle cx="0" cy="0" r="45" fill="none" stroke="white" stroke-width="2"/>
+    <path d="M 0 -20 L 0 20 M -8 5 L 0 20 L 8 5" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  
+  <!-- Piggy Bank - Left Bottom -->
+  <g id="piggy-bank" opacity="0.11" transform="translate(150, 150)">
+    <!-- Body -->
+    <ellipse cx="0" cy="0" rx="40" ry="50" fill="white" stroke="white" stroke-width="1.5"/>
+    <!-- Head -->
+    <circle cx="40" cy="-30" r="20" fill="white" stroke="white" stroke-width="1.5"/>
+    <!-- Snout -->
+    <circle cx="58" cy="-25" r="8" fill="white"/>
+    <!-- Ear -->
+    <ellipse cx="30" cy="-55" rx="10" ry="18" fill="white"/>
+    <!-- Slot -->
+    <rect x="-15" y="-35" width="10" height="8" fill="white"/>
+    <!-- Legs -->
+    <rect x="-20" y="45" width="8" height="25" rx="4" fill="white"/>
+    <rect x="12" y="45" width="8" height="25" rx="4" fill="white"/>
+  </g>
+  
+  <!-- Credit Card - Right Center -->
+  <g id="card" opacity="0.12" transform="translate(800, 350) rotate(-20)">
+    <rect x="0" y="0" width="120" height="80" rx="8" fill="white" stroke="white" stroke-width="1.5"/>
+    <!-- Chip -->
+    <rect x="10" y="10" width="24" height="24" fill="white" opacity="0.5"/>
+    <line x1="14" y1="14" x2="30" y2="14" stroke="white" stroke-width="1" opacity="0.4"/>
+    <line x1="14" y1="18" x2="30" y2="18" stroke="white" stroke-width="1" opacity="0.4"/>
+    <!-- Number dots -->
+    <circle cx="70" cy="25" r="2" fill="white" opacity="0.4"/>
+    <circle cx="80" cy="25" r="2" fill="white" opacity="0.4"/>
+    <circle cx="90" cy="25" r="2" fill="white" opacity="0.4"/>
+    <circle cx="100" cy="25" r="2" fill="white" opacity="0.4"/>
+    <!-- Name -->
+    <rect x="10" y="55" width="50" height="8" rx="2" fill="white" opacity="0.3"/>
+  </g>
+  
+  <!-- Dollar Sign Large - Top Left -->
+  <g id="dollar-sign" opacity="0.08" transform="translate(200, 250)">
+    <text x="0" y="0" font-size="120" font-weight="bold" text-anchor="middle" fill="white">$</text>
+  </g>
+  
+  <!-- Target/Goal - Bottom Center -->
+  <g id="target" opacity="0.11" transform="translate(500, 650)">
+    <circle cx="0" cy="0" r="50" fill="none" stroke="white" stroke-width="2"/>
+    <circle cx="0" cy="0" r="35" fill="none" stroke="white" stroke-width="1.5" opacity="0.6"/>
+    <circle cx="0" cy="0" r="20" fill="none" stroke="white" stroke-width="1.5" opacity="0.4"/>
+    <circle cx="0" cy="0" r="8" fill="white" opacity="0.5"/>
+  </g>
+  
+  <!-- Decorative Stars -->
+  <g id="stars" opacity="0.1">
+    <text x="100" y="100" font-size="30">✦</text>
+    <text x="900" y="200" font-size="25">✦</text>
+    <text x="150" y="700" font-size="22">✦</text>
+    <text x="850" y="750" font-size="28">✦</text>
+  </g>
+</svg>

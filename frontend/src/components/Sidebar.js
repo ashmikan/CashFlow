@@ -1,4 +1,4 @@
-import cashFlowLogo from "../assets/cashflow-logo.svg";
+import cashFlowLogo from "../assets/cashflow-logo.png";
 import "../styles/Dashboard.css";
 
 function Sidebar({items,activeSection,onNavigate,onLogout}){
